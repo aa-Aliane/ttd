@@ -1,0 +1,310 @@
+:root {
+  --clr-primary-700: hsl(246, 80%, 60%);
+  --clr-primary-600: hsl(264, 64%, 52%);
+  --clr-primary-500: hsl(15, 100%, 70%);
+  --clr-primary-400: hsl(43, 84%, 65%);
+  --clr-primary-300: hsl(195, 74%, 62%);
+  --clr-primary-200: hsl(348, 100%, 68%);
+  --clr-primary-100: hsl(145, 58%, 55%);
+  --clr-neutral-400: hsl(226, 43%, 10%);
+  --clr-neutral-300: hsl(235, 46%, 20%);
+  --clr-neutral-200: hsl(235, 45%, 61%);
+  --clr-neutral-100: hsl(236, 100%, 87%);
+  --clr-neutral-50: hsl(236, 100%, 98%);
+
+  --fs-small: 0.75rem;
+  --fs-body: 1.125rem;
+  --fs-title: 1.5rem;
+  --fs-heading: 3rem;
+
+  --ff-primary: "Rubik", sans-serif;
+
+  --fw-light: 200;
+  --fw-regular: 400;
+  --fw-medium: 500;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--clr-neutral-400);
+  font-size: var(--fs-body);
+  font-family: var(--ff-primary);
+  color: var(--clr-neutral-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  margin-top: 3rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.container {
+  display: grid;
+  width: 100%;
+}
+
+.container[content-type="profile"] {
+  margin-bottom: -2.5rem;
+}
+
+.container[content-type="activity"] {
+  position: relative;
+}
+
+.theme > img {
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  visibility: hidden;
+}
+
+.container[content-type="activity"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  border-radius: 1rem;
+  background-position: 95% 0;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.container[content-theme="work"]::before {
+  background-image: url(images/icon-work.svg);
+  background-color: var(--clr-primary-500);
+}
+.container[content-theme="play"]::before {
+  background-image: url(images/icon-play.svg);
+  background-color: var(--clr-primary-300);
+}
+.container[content-theme="study"]::before {
+  background-image: url(images/icon-study.svg);
+  background-color: var(--clr-primary-200);
+}
+.container[content-theme="exercise"]::before {
+  background-image: url(images/icon-exercise.svg);
+  background-color: var(--clr-primary-100);
+}
+.container[content-theme="social"]::before {
+  background-image: url(images/icon-social.svg);
+  background-color: var(--clr-primary-600);
+}
+.container[content-theme="self care"]::before {
+  background-image: url(images/icon-self-care.svg);
+  background-color: var(--clr-primary-400);
+}
+
+.time-spent {
+  background-color: var(--clr-neutral-300);
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem 1.2rem;
+}
+
+.time-spent > p:nth-child(1) {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
+  text-align: left;
+}
+.time-spent > p:nth-child(2) {
+  grid-column: 1 / 2;
+  grid-row: 2 /3;
+  font-size: var(--fs-title);
+  font-weight: var(--fw-light);
+  text-align: left;
+}
+
+.time-spent > p:nth-child(4) {
+  font-size: var(--fs-small);
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+.time-spent > img {
+  margin-top: 1rem;
+  margin-left: auto;
+}
+
+.profile {
+  background-color: var(--clr-primary-700);
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 1rem;
+  z-index: 1;
+}
+
+.profile > img {
+  height: 4rem;
+  width: 4rem;
+  border: 0.2rem solid var(--clr-neutral-100);
+  border-radius: 50%;
+}
+
+.name {
+  text-align: left;
+}
+
+.name > p:first {
+  text-transform: capitalize;
+}
+
+.name > p:last-child {
+  font-weight: var(--fw-medium);
+}
+
+.frequence {
+  position: relative;
+  background-color: var(--clr-neutral-300);
+  display: flex;
+  padding: 2rem;
+  padding-top: 4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  border-radius: 1rem;
+  transform: translateY(-2.5rem);
+  z-index: 0;
+}
+
+.frequence > li {
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.frequence > li:hover {
+  color: var(--clr-neutral-50);
+}
+
+.frequence > li[state-type="active"] {
+  color: var(--clr-neutral-50);
+}
+
+
+
+
+@media (min-width: 50em) {
+  main {
+    max-width: 90vw;
+    width: 100%;
+    height : 90%;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .container:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+
+  .profile {
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+  }
+
+  .frequence {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .name > p:last-child {
+    max-width: 7ch;
+    font-size: var(--fs-title);
+  }
+
+  .time-spent {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .time-spent > p:nth-child(2) {
+    grid-column: 1 / 2;
+    font-size: var(--fs-heading);
+    min-width: 5ch;
+  }
+
+  .time-spent > img {
+    background-color: black;
+  }
+  .time-spent > p:nth-child(4) {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    text-align: left;
+  }
+}
+
